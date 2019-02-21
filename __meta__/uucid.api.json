@@ -1,0 +1,142 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.0.17",
+    "schemaVersion": 1000
+  },
+  "kind": "Package",
+  "canonicalReference": "uucid",
+  "docComment": "",
+  "name": "uucid",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "",
+      "name": "",
+      "members": [
+        {
+          "kind": "Function",
+          "canonicalReference": "(extractTimestampFromUUCID:0)",
+          "docComment": "/**\n * Extract the timestamp from a given UUCID.\n *\n * @param id - UUCID to extract the timestamp from.\n *\n * @returns Extracted timestamp in milliseconds.\n *\n * @example\n * ```typescript\n *\n * import { extractTimestampFromUUCID } from 'uucid'\n *\n * extractTimestampFromUUCID('10135533-2332-4012-aada-b36571a05399')\n * // Returns 1355332332012\n * ```\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function "
+            },
+            {
+              "kind": "Reference",
+              "text": "extractTimestampFromUUCID"
+            },
+            {
+              "kind": "Content",
+              "text": "("
+            },
+            {
+              "kind": "Reference",
+              "text": "id"
+            },
+            {
+              "kind": "Content",
+              "text": ": "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 0,
+          "parameters": [
+            {
+              "parameterName": "id",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              }
+            }
+          ],
+          "name": "extractTimestampFromUUCID"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "(uucid:0)",
+          "docComment": "/**\n * Generate a new UUCID-formatted UUIDv4 ID.\n *\n * @param input - Timestamp in milliseconds, date string or a `Date` instance.\n *\n * @returns UUID string.\n *\n * @example\n * ```typescript\n *\n * import { uucid } from 'uucid'\n *\n * uucid() // Defaults to Date.now()\n * uucid(new Date('12/12/2012')) // Accepts an instance of `Date`.\n * uucid('12/12/2012') // Also accepts anything that `new Date()` accepts.\n * uucid(1355288400000) // Including millisecond timestamps.\n * ```\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function "
+            },
+            {
+              "kind": "Reference",
+              "text": "uucid"
+            },
+            {
+              "kind": "Content",
+              "text": "("
+            },
+            {
+              "kind": "Reference",
+              "text": "input"
+            },
+            {
+              "kind": "Content",
+              "text": "?: "
+            },
+            {
+              "kind": "Content",
+              "text": "number | string | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Date"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 8,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 0,
+          "parameters": [
+            {
+              "parameterName": "input",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            }
+          ],
+          "name": "uucid"
+        }
+      ]
+    }
+  ]
+}
