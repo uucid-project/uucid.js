@@ -59,7 +59,7 @@
     "tslint-slick": "5.0.0",
     "typedoc": "0.14.2",
     "typedoc-plugin-markdown": "1.2.0",
-    "typescript": "3.4.2",
+    "typescript": "3.4.4",
     "typescript-tslint-plugin": "0.3.1",
     "ulid": "2.3.0",
     "uuid-validate": "0.0.3",
