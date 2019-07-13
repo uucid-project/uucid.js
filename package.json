@@ -60,7 +60,7 @@
     "typedoc": "0.14.2",
     "typedoc-plugin-markdown": "1.2.0",
     "typescript": "3.4.4",
-    "typescript-tslint-plugin": "0.3.1",
+    "typescript-tslint-plugin": "0.5.4",
     "ulid": "2.3.0",
     "uuid-validate": "0.0.3",
     "weak": "1.0.1"
