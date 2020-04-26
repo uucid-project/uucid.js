@@ -1,61 +1,33 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 import mathRandom from 'math-random'
 
-/**
- * Random length.
- *
- * @internal
- */
 const RANDOM_LENGTH = 15
-
-/**
- * Random string generator seed.
- *
- * @internal
- */
 const RANDOM_SEED = 100_000_000_000_000
-
-/**
- * Minimum time.
- *
- * @internal
- */
 const MIN_TIME = -8_640_000_000_000
-
-/**
- * Max time.
- *
- * @internal
- */
 const MAX_TIME = 99_999_999_999_999
 
 /**
  * Max time string length.
- *
- * @internal
  */
 const TIME_STR_LENGTH = 14
 
 /**
  * UUID v4 variants.
- *
- * @internal
  */
 const UUID_V4_VARIANTS: string[] = ['8', '9', 'a', 'b']
 
 /**
  * UUID v4 variants.
- *
- * @internal
  */
 const UUID_V4_VARIANTS_LENGTH: number = UUID_V4_VARIANTS.length
 
 /**
  * Validate a timestamp and throw an error if it's invalid.
  *
- * @internal
  * @param timestampMs - Timestamp in milliseconds.
  */
-function validateTimestamp(timestampMs: number): void {
+const validateTimestamp = (timestampMs: number): void => {
   if (
     // tslint:disable-next-line strict-type-predicates
     typeof timestampMs !== 'number' ||
@@ -74,10 +46,11 @@ function validateTimestamp(timestampMs: number): void {
 /**
  * Generate a random string.
  *
- * @internal
+ * @returns Random string.
  */
-function getRandomString(): string {
+const getRandomString = (): string => {
   let str = ''
+  // eslint-disable-next-line no-loops/no-loops
   while (str.length < RANDOM_LENGTH) {
     str += (Math.floor(mathRandom() * RANDOM_SEED) + 1).toString(16)
   }
@@ -87,35 +60,34 @@ function getRandomString(): string {
 /**
  * Format a string as a UUID.
  *
- * @internal
- * @param timestampMs
- * @param random
+ * @param timestampMs - Timestamp in milliseconds.
+ * @param random - Random string.
+ * @returns UUID formatted ID.
  */
-function formatAsUUID(timestampMs: number, random: string): string {
+const formatAsUUID = (timestampMs: number, random: string): string => {
   validateTimestamp(timestampMs)
   const absoluteNum = timestampMs > 0 ? timestampMs : Math.abs(timestampMs)
   const timestampStr = absoluteNum.toString().padStart(TIME_STR_LENGTH, '0')
 
   return [
     timestampMs > 0 ? 1 : 0,
-    timestampStr.substring(0, 7),
+    timestampStr.slice(0, 7),
     '-',
-    timestampStr.substring(7, 11),
+    timestampStr.slice(7, 11),
     '-',
     '4',
-    timestampStr.substring(11, 14),
+    timestampStr.slice(11, 14),
     '-',
     UUID_V4_VARIANTS[Math.floor(mathRandom() * UUID_V4_VARIANTS_LENGTH) + 0],
-    random.substring(0, 3),
+    random.slice(0, 3),
     '-',
-    random.substring(3, 15)
+    random.slice(3, 15)
   ].join('')
 }
 
 /**
  * Extract the timestamp from a given UUCID.
  *
- * @public
  * @param id - UUCID to extract the timestamp from.
  * @returns Extracted timestamp in milliseconds.
  * @example
@@ -127,31 +99,33 @@ function formatAsUUID(timestampMs: number, random: string): string {
  * // Returns 1355332332012
  * ```
  */
-export function extractTimestampFromUUCID(id: string): number {
+export const extractTimestampFromUUCID = (id: string): number => {
   const timeStampParts: string[] = []
   const chars = id.split('')
-  let i = 0
+  let index = 0
+  // eslint-disable-next-line no-loops/no-loops
   for (const char of chars) {
-    if ((i !== 0 && i < 8) || (i >= 9 && i < 13) || (i >= 15 && i < 18)) {
+    if (
+      (index !== 0 && index < 8) ||
+      (index >= 9 && index < 13) ||
+      (index >= 15 && index < 18)
+    ) {
       timeStampParts.push(char)
     }
-    i += 1
+    index += 1
   }
 
-  const timestamp = parseInt(timeStampParts.join(''), 10)
+  const timestamp = Number.parseInt(timeStampParts.join(''), 10)
   return chars[0] === '1' ? timestamp : timestamp * -1
 }
 
 /**
  * Generate a new UUCID-formatted UUIDv4 ID.
  *
- * @public
- * @param input - Timestamp in milliseconds, date string or
- * a `Date` instance.
+ * @param input - Timestamp in milliseconds, date string or a `Date` instance.
  * @returns UUID string.
  * @example
- * ```typescript
- *
+ * ``` typescript
  * import { uucid } from 'uucid'
  *
  * uucid() // Defaults to Date.now()
@@ -160,7 +134,7 @@ export function extractTimestampFromUUCID(id: string): number {
  * uucid(1355288400000) // Including millisecond timestamps.
  * ```
  */
-export function uucid(input: number | string | Date = Date.now()): string {
+export const uucid = (input: number | string | Date = Date.now()): string => {
   const timestampMs =
     typeof input === 'number'
       ? input
@@ -169,8 +143,3 @@ export function uucid(input: number | string | Date = Date.now()): string {
       : new Date(input).getTime()
   return formatAsUUID(timestampMs, getRandomString())
 }
-
-/**
- * @public
- */
-export default uucid
