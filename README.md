@@ -7,6 +7,7 @@ Universally Unique Chronologically-Sortable Identifier compatible with UUID v4.
 [![npm](https://img.shields.io/npm/v/uucid.svg?style=flat-square)](https://npmjs.org/package/uucid)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/uucid-project/uucid.js/blob/master/LICENSE)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fuucid-project%2Fuucid.js.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fuucid-project%2Fuucid.js?ref=badge_shield)
 
 ## Install
 
@@ -97,3 +98,6 @@ Extracted timestamp in milliseconds.
 ## License
 
 [MIT](https://github.com/uucid-project/uucid.js/blob/master/LICENSE)
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fuucid-project%2Fuucid.js.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fuucid-project%2Fuucid.js?ref=badge_large)
